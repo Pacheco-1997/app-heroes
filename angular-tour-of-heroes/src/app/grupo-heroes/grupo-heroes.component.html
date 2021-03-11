@@ -1,1 +1,21 @@
-<p>grupo-heroes works!</p>
+<h2>Todos os grupos</h2>
+<br>
+
+<div>
+    <label id="new-grupo">Nome do Grupo: </label>
+    <input for="new-grupo" #grupoName />
+  
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button type="submit" class="add-button" (click)="addGrupo(grupoName.value); grupoName.value=''">
+      Adicionar Grupo
+    </button>
+  </div>
+
+<ul class="grupos">
+    <li *ngFor="let grupo of grupos">
+      <a *ngIf="grupo">
+        <span class="badge">{{grupo.id_grupo}}</span> {{grupo.nome_grupo}}
+      </a>
+      <!-- aqui ficava o excluir -->
+    </li>
+  </ul>

@@ -30,7 +30,7 @@ export class HeroesComponent implements OnInit {
         },
         (error:HttpErrorResponse) => {
           if(error.status === 409) {
-            alert('baaaaann!');
+            alert('Este heroi já existe');
           }
       });
       

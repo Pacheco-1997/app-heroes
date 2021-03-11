@@ -1,8 +1,11 @@
 /* AppComponent's private CSS styles */
 h1 {
   margin-bottom: 0;
+  margin-left:  10px;
+  padding-top: 30px;
 }
 nav a {
+  margin-left:  20px;
   padding: 1rem;
   text-decoration: none;
   margin-top: 10px;
@@ -18,7 +21,7 @@ nav a.btn2{
 }
 
 nav a.btnGrupos{
-  background-color: rgb(255, 238, 5);
+  background-color: rgb(255, 97, 5);
 }
 
 nav a:hover {
@@ -27,4 +30,11 @@ nav a:hover {
 }
 nav a.active {
   background-color: black;
+}
+
+.header{
+  background-color: rgb(247, 243, 9);
+  height: 200px;
+  border-radius: 4px;
+  opacity: 80%;
 }

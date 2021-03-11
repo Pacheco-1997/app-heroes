@@ -3,13 +3,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 
 import { Hero } from './hero';
-//import { HEROES } from './mock-heroes';
+import { Grupo } from './grupo';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
 private heroesUrl = 'https://localhost:44311/api/heroes'; //URL to web api
+private grupoUrl = 'https://localhost:44311/api/grupo'; // url de grupos
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -50,6 +51,14 @@ getHeroes(): Observable<Hero[]> {
     .pipe(
       tap(_ => this.log('fetched heroes')),
       catchError(this.handleError<Hero[]>('getHeroes', []))
+    );
+}
+
+getGrupos(): Observable<Grupo[]> {
+  return this.http.get<Grupo[]>(this.grupoUrl + "/mostratodos" )
+    .pipe(
+      tap(_ => this.log('fetched grupos')),
+      catchError(this.handleError<Grupo[]>('getGrupos', []))
     );
 }
 
@@ -102,6 +111,13 @@ updateHero(hero: Hero): Observable<any>{
     tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
     //catchError(this.handleError<Hero>('addHero'))
   );
+}
+
+addGrupo(grupo: Grupo): Observable<Grupo | HttpErrorResponse> {
+  return this.http.post<Grupo>(this.grupoUrl, grupo, this.httpOptions)
+         .pipe(
+           tap((newGrupo: Grupo) => this.log(`novo grupo adicionado w/ id=${newGrupo.id_grupo}`))
+         )
 }
 
 /** DELETE: delete the hero from the server */
