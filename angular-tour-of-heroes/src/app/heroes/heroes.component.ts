@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnChanges, OnInit } from '@angular/core';
+import { Grupo } from '../grupo';
 
 import {Hero} from '../hero'; // importando hero.ts da interface hero
 import { HeroService } from '../hero.service';
@@ -13,6 +14,7 @@ import { MessageService } from '../message.service';
 
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = []; 
+  grupos: Grupo[] = []
 
    
   constructor(private heroService: HeroService, private messageService: MessageService) { }

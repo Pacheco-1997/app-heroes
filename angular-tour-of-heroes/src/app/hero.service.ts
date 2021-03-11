@@ -88,20 +88,32 @@ getHero(id: number): Observable<Hero> {
 }
 
 
+getGrupo(id_grupo: number): Observable<Grupo>{
+   const url = `${this.grupoUrl}/${id_grupo}`;
+   return this.http.get<Grupo>(url).pipe(
+     tap(_ => this.log(`fetched grupo id=${id_grupo}`)),
+     catchError(this.handleError<Grupo>(`getGrupo id=${id_grupo}`))
+   )
+}
+
+getGruposByHeroId(id_hero: number)
+
+
 
 updateHero(hero: Hero): Observable<any>{
-
-  //this.getHero(hero.id).subscribe(hero=> {
-    //console.log('log ',hero);
-  //});
-  console.log(this.heroesUrl );
-  console.log(hero);
-  console.log( this.httpOptions);
 
   return this.http.put(this.heroesUrl + "/" + hero.id, hero, this.httpOptions).pipe(
     tap(_ => this.log(`updated hero id=${hero.id}  to ${hero.name}`)),
     catchError(this.handleError<any>('updateHero'))
   );
+}
+
+updateGrupo(grupo: Grupo): Observable<any>{
+     
+     return this.http.put(this.grupoUrl + "/" + grupo.id_grupo, grupo, this.httpOptions).pipe(
+       tap(_ => this.log(`updated grupo id=${grupo.id_grupo} to ${grupo.nome_grupo}`)),
+       catchError(this.handleError<any>('updateGrupo'))
+     )
 }
 
 /** POST: add a new hero to the server */
@@ -129,6 +141,16 @@ deleteHero(hero: Hero | number): Observable<Hero> {
     tap(_ => this.log(`deleted hero id=${id}`)),
     catchError(this.handleError<Hero>('deleteHero'))
   );
+}
+
+deleteGrupo(grupo: Grupo | number): Observable<Grupo>{
+  const id = typeof grupo === 'number' ? grupo : grupo.id_grupo;
+  const url = `${this.grupoUrl}/${id}`;
+
+  return this.http.delete<Grupo>(url, this.httpOptions).pipe(
+    tap(_ => this.log(`deleted grupo id=${id}`)),
+    catchError(this.handleError<Grupo>('deleteGrupo'))
+  )
 }
 
 /* GET heroes whose name contains search term */

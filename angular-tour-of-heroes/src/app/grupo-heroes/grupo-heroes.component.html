@@ -13,7 +13,7 @@
 
 <ul class="grupos">
     <li *ngFor="let grupo of grupos">
-      <a *ngIf="grupo">
+      <a *ngIf="grupo" routerLink="/grupodetail/{{grupo.id_grupo}}" >
         <span class="badge">{{grupo.id_grupo}}</span> {{grupo.nome_grupo}}
       </a>
       <!-- aqui ficava o excluir -->

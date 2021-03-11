@@ -1,0 +1,14 @@
+<div *ngIf="grupo">
+    <h2>{{grupo.nome_grupo| uppercase}} Details</h2>
+    <div><span>id: </span>{{grupo.id_grupo}}</div>
+    <div>
+      <label for="grupo-name">Nome do Grupo: </label>
+      <input id="grupo-name" [(ngModel)]="grupo.nome_grupo" placeholder="Nome do grupo"/>
+    </div>
+
+  
+    <button (click)="goBack()">voltar</button>
+    <button (click)="save()">save</button>
+    <button class="delete" title="delete hero"
+        (click)="delete(grupo)">X</button>
+  </div>
