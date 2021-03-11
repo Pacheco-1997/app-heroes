@@ -14,6 +14,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { TopHeroMagicComponent } from './top-hero-magic/top-hero-magic.component';
+import { GrupoHeroesComponent } from './grupo-heroes/grupo-heroes.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TopHeroMagicComponent } from './top-hero-magic/top-hero-magic.component
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    TopHeroMagicComponent
+    TopHeroMagicComponent,
+    GrupoHeroesComponent
   ],
   imports: [
     BrowserModule,

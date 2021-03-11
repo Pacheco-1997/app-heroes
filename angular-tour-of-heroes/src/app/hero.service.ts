@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { Hero } from './hero';
@@ -96,11 +96,11 @@ updateHero(hero: Hero): Observable<any>{
 }
 
 /** POST: add a new hero to the server */
- addHero(hero: Hero): Observable<Hero> {
+ addHero(hero: Hero): Observable<Hero | HttpErrorResponse> {
   console.log(hero);
   return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
     tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
-    catchError(this.handleError<Hero>('addHero'))
+    //catchError(this.handleError<Hero>('addHero'))
   );
 }
 

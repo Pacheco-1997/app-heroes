@@ -12,13 +12,18 @@
 
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
+    <a *ngIf="hero" routerLink="/detail/{{hero.id}}"  >
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
     <!-- aqui ficava o excluir -->
   </li>
 </ul>
 
+<!--<div *ngIf="erro">
+nao passei
+</div>
 
- 
 
+ <ng-template #EmptyTemplate>
+  
+</ng-template> -->
