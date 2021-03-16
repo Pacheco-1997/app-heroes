@@ -1,5 +1,5 @@
 /* HeroDetailComponent's private CSS styles */
-label {
+ label {
     color: #435960;
     font-weight: bold;
   }
@@ -23,9 +23,119 @@ label {
     cursor: auto;
   }
 
-  /* Chrome, Safari, Edge, Opera */
+  
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.heroes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+  
+}
+
+.heroes li {
+  position: relative;
+  cursor: pointer;
+  width: 340px;
+  
+  
+}
+
+.heroes a:hover {
+  left: .1em;
+}
+
+.heroes a {
+  color: #333;
+  text-decoration: none;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 37px;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  
+}
+
+
+
+.heroes a:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+  
+}
+
+.heroes a:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.heroes .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  width: 31px;
+  min-width: 16px;
+  text-align: right;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+  height: 37px;
+  
+  
+}
+
+#btn-li{
+  height: 37px;
+  width: 37px;
+
+
+
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#ff0101;
+  line-height: 1em;
+  position: relative;
+
+  
+  min-width: 16px;
+  text-align: center;
+  
+}
+
+#btn-li2{
+  height: 26px;
+  width: 3px;
+
+
+
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#01ff23d0;
+  line-height: 1em;
+  position: relative;
+
+  
+  min-width: 16px;
+  text-align: center;
+  
+}
+
+.-list{
+  display: flex;
+
+  
 }

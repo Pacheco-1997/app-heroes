@@ -4,6 +4,9 @@ import { Location } from '@angular/common'; // serviço para interagir com o Bro
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { HeroGrupo } from '../herogrupo';
+
+import { Grupo } from '../grupo';
 
 
 @Component({
@@ -14,7 +17,10 @@ import { HeroService } from '../hero.service';
 export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
   heroes: Hero[] = []; 
-  oldHero: any;
+  heroGrupos: HeroGrupo[] = [];
+  grupos: Grupo[] = [];
+  flag?: string;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -24,17 +30,37 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
+    this.getGruposByHeroId();
+   
   }
 
+
+
+  getGruposByHeroId():  any{
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    return this.heroService.getGruposByHeroId(id).subscribe(
+      resp => {
+        this.heroGrupos = resp;
+        
+        
+        console.log(this.heroGrupos.map(a => a.id_grupo))
+
+
+        if(this.heroGrupos.length != 0){
+          this.flag = "alguma coisa"
+        }
+      }
+    )
+  }
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id)
       .subscribe(hero => {
         this.hero = hero;
-        console.log(this.oldHero);
+        
       });
-      this.oldHero = this.hero;
+    
     }
 
   goBack(): void{

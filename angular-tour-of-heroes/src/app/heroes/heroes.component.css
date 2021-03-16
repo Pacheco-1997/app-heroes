@@ -31,10 +31,10 @@ input {
   background-color: #EEE;
   margin: .5em;
   padding: .3em 0;
-  height: 1.6em;
+  height: 37px;
   border-radius: 4px;
   display: block;
-  width: 100%;
+  width: 230px;
 }
 
 .heroes a:hover {
@@ -57,7 +57,7 @@ input {
   position: relative;
   left: -1px;
   top: -4px;
-  height: 1.8em;
+  height: 37px;
   min-width: 16px;
   text-align: right;
   margin-right: .8em;
@@ -88,4 +88,44 @@ button.delete {
 button.delete:hover {
   background-color: #525252;
   color: white;
+}
+
+
+.-list{
+  display: flex;
+  width: 500px;
+  
+}
+
+#btn-li2{
+  height: 37px;
+  width: 37px;
+
+
+
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color:#01ff23d0;
+  line-height: 1em;
+  position: relative;
+
+  
+  min-width: 16px;
+  text-align: center;
+  
+}
+
+
+
+
+.dark-modal .modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+.dark-modal .close {
+  color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
 }

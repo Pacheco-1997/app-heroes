@@ -12,3 +12,26 @@
     <button class="delete" title="delete hero"
         (click)="delete(grupo)">X</button>
   </div>
+  <br>
+
+ <div *ngIf="flag">
+    <h2>Heroes</h2>
+  <ul class="heroes">
+    <li  *ngFor="let hero of heroGrupos">
+      <div  class="-list">
+        
+        <a class="principal" *ngIf="hero">
+          <span  class=" badge">{{hero.id}}</span>  {{hero.name}} 
+        </a>
+
+        <a (click)="deleteHeroGrupo(hero.id)" id="btn-li">X</a>
+        
+      </div>
+    </li>
+    
+  </ul>
+  
+  
+  </div> 
+
+ 

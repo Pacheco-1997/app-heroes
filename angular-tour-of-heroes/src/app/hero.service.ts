@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import { Hero } from './hero';
+import { Hero, GrupoHero } from './hero';
 import { Grupo } from './grupo';
+import { HeroGrupo } from './herogrupo';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -11,6 +12,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class HeroService {
 private heroesUrl = 'https://localhost:44311/api/heroes'; //URL to web api
 private grupoUrl = 'https://localhost:44311/api/grupo'; // url de grupos
+private heroGrupoUrl = 'https://localhost:44311/api/grupoheroe'
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -54,13 +56,7 @@ getHeroes(): Observable<Hero[]> {
     );
 }
 
-getGrupos(): Observable<Grupo[]> {
-  return this.http.get<Grupo[]>(this.grupoUrl + "/mostratodos" )
-    .pipe(
-      tap(_ => this.log('fetched grupos')),
-      catchError(this.handleError<Grupo[]>('getGrupos', []))
-    );
-}
+
 
 getTopHeroes(): Observable<Hero[]>{
   return this.http.get<Hero[]>(this.heroesUrl + "/maiorpoder")
@@ -96,7 +92,34 @@ getGrupo(id_grupo: number): Observable<Grupo>{
    )
 }
 
-getGruposByHeroId(id_hero: number)
+getGrupos(): Observable<Grupo[]> {
+  return this.http.get<Grupo[]>(this.grupoUrl + "/mostratodos" )
+    .pipe(
+      tap(_ => this.log('fetched grupos')),
+     
+    );
+}
+
+getGruposByHeroId(id: number): Observable<HeroGrupo[]>{
+  const url = `${this.heroGrupoUrl}/pega-grupo-id-heroe/${id}`;
+  return this.http.get<HeroGrupo[]>(url).pipe(
+    tap(_ => this.log('fetched grupos')),
+    catchError(this.handleError<HeroGrupo[]>('getGrupos', []))
+    );
+  
+} 
+
+
+getHeroesByGrupoId(id: number): Observable<HeroGrupo[]>{
+  const url = `${this.heroGrupoUrl}/pega-heroe-id-grupo/${id}`;
+  return this.http.get<HeroGrupo[]>(url).pipe(
+    tap(_ => this.log('fetched grupos')),
+    catchError(this.handleError<HeroGrupo[]>('getGrupos', []))
+    );
+  
+} 
+
+
 
 
 
@@ -165,6 +188,22 @@ searchHeroes(term: string): Observable<Hero[]> {
        this.log(`no heroes matching "${term}"`)),
     catchError(this.handleError<Hero[]>('searchHeroes', []))
   );
+}
+
+deleteRelHeroGrupo(id_grupo: number ,id: number ): Observable<null>{
+    const url = `${this.heroGrupoUrl}/deleta-hero-grupo`;
+    return this.http.post<null>(url, {id_grupo: id_grupo, id: id}).pipe(
+        tap(_ =>    this.log(`fetched hero id=${id} was removed`)),
+        catchError(this.handleError<null>(`deleteRelHeroGrupo ${id}`))
+    )
+}
+
+addRelHeroGrupo(id_grupo: number ,id: number ): Observable<null>{
+  const url = `${this.heroGrupoUrl}/adiciona-hero-grupo`;
+  return this.http.post<null>(url, {id_grupo: id_grupo, id: id}).pipe(
+    tap(_ =>    this.log(`fetched hero id=${id} was added to id_grupo=${id_grupo}`)),
+    catchError(this.handleError<null>(`addRelHeroGrupo ${id} to ${id_grupo}`))
+  )
 }
 
 

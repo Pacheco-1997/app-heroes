@@ -12,12 +12,47 @@
 
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
-    <a *ngIf="hero" routerLink="/detail/{{hero.id}}"  >
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <div class="-list">
+    <a  *ngIf="hero" routerLink="/detail/{{hero.id}}"  >
+      <span  class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
-    <!-- aqui ficava o excluir -->
+    <a (click)="saveHero(hero.id);openLg(content)" id="btn-li2">+</a>
+  </div>
   </li>
 </ul>
+
+<div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Escolha um grupo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul class="lista-de-grupos">
+      <li *ngFor="let grupo of grupos" >
+        <a (click)="saveGrupo(grupo.id_grupo)">
+          {{grupo.nome_grupo}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="addRelHeroGrupo();modal.close('Close click')">Save</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+</div>
+
+ <!-- <ul class="heroes">    codigo do Naka pra fazer aquele negocio
+  <li *ngFor="let hero of heroes">
+    <a  (mouseover)="pegaID(hero.id)" *ngIf="hero" routerLink="/detail/{{hero.id}}"  >
+      <span  class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+  </li>
+</ul>-->
+
 
 <!--<div *ngIf="erro">
 nao passei

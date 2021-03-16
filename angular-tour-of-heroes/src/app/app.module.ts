@@ -11,11 +11,13 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component'; // importando para poder usar o [(ngModel)]
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataService } from './in-memory-data.service';
+
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { TopHeroMagicComponent } from './top-hero-magic/top-hero-magic.component';
 import { GrupoHeroesComponent } from './grupo-heroes/grupo-heroes.component';
 import { GrupoDetailComponent } from './grupo-detail/grupo-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { GrupoDetailComponent } from './grupo-detail/grupo-detail.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
    // HttpClientInMemoryWebApiModule.forRoot(
     //  InMemoryDataService, { dataEncapsulation: false }
     //)

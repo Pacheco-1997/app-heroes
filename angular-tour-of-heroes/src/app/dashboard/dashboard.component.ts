@@ -10,6 +10,8 @@ import { HeroService } from '../hero.service';// teste
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
 
+ 
+
 
   constructor(private heroService: HeroService) { }
 
@@ -21,5 +23,8 @@ export class DashboardComponent implements OnInit {
        this.heroService.getTopHeroes()
            .subscribe(heroes => this.heroes = heroes);
   }
+
+
+
 
 }

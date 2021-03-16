@@ -29,7 +29,7 @@
     background-color: rgb(252, 243, 118);
     margin: .5em;
     padding: .3em 0;
-    height: 1.6em;
+    height: 37px;
     border-radius: 4px;
     display: block;
     width: 100%;
@@ -55,7 +55,7 @@
     position: relative;
     left: -1px;
     top: -4px;
-    height: 1.8em;
+    height: 37px;
     min-width: 16px;
     text-align: right;
     margin-right: .8em;
